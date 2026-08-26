@@ -1,0 +1,428 @@
+
+\documentclass[UTF8,12pt,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{siunitx}
+
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\begin{document}
+
+\section{问题一：基于双光束干涉的外延层厚度模型}
+
+\subsection{模型假设}
+
+根据题意，仅考虑红外光在外延层表面反射以及在外延层--衬底界面发生一次反射所形成的双光束干涉，不考虑光波在两界面之间的多次反射。为建立外延层厚度的数学模型，作如下假设：
+
+\begin{enumerate}
+    \item 外延层上下界面相互平行，且测量区域内厚度均匀；
+    \item 入射光可视为单色平面波；
+    \item 空气折射率近似取为 $n_0=1$；
+    \item 对于给定波长，外延层折射率可表示为 $n(\lambda)$，允许其随波长变化；
+    \item 仅考虑外延层表面反射光与外延层--衬底界面一次反射光之间的干涉；
+    \item 界面反射产生的附加相位差在所考察光谱范围内视为常数。
+\end{enumerate}
+
+\subsection{符号说明}
+
+本文主要符号及其物理意义如下：
+
+\begin{table}[H]
+    \centering
+    \caption{主要符号说明}
+    \begin{tabular}{ccl}
+        \toprule
+        符号 & 单位 & 含义 \\
+        \midrule
+        $d$ & $\mathrm{cm}$ 或 $\mu\mathrm{m}$ & 外延层厚度 \\
+        $\lambda$ & $\mathrm{cm}$ & 红外光在空气中的波长 \\
+        $\sigma$ & $\mathrm{cm}^{-1}$ & 波数，$\sigma=1/\lambda$ \\
+        $n_0$ & -- & 空气折射率，近似取 $n_0=1$ \\
+        $n(\lambda)$ & -- & 外延层折射率 \\
+        $\theta_0$ & $\mathrm{rad}$ 或 $^\circ$ & 红外光在空气中的入射角 \\
+        $\theta$ & $\mathrm{rad}$ 或 $^\circ$ & 红外光进入外延层后的折射角 \\
+        $m$ & -- & 干涉级次，$m\in\mathbb{Z}$ \\
+        $\Delta L$ & $\mathrm{cm}$ & 两束反射光的有效光程差 \\
+        $\Delta\phi$ & $\mathrm{rad}$ & 两束反射光的总相位差 \\
+        $\phi_r$ & $\mathrm{rad}$ & 两束反射光的相对反射附加相位差 \\
+        $I_1,I_2$ & -- & 两束反射光的光强 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{折射角关系}
+
+设红外光由空气以入射角 $\theta_0$ 入射到外延层，在外延层中的折射角为 $\theta$。
+根据 Snell 定律，有
+
+\begin{equation}
+    n_0\sin\theta_0=n(\lambda)\sin\theta.
+\end{equation}
+
+由于空气折射率近似为 $n_0=1$，因此
+
+\begin{equation}
+    \sin\theta
+    =
+    \frac{\sin\theta_0}{n(\lambda)}.
+\end{equation}
+
+于是
+
+\begin{equation}
+    \cos\theta
+    =
+    \sqrt{
+    1-\frac{\sin^2\theta_0}{n^2(\lambda)}
+    }.
+\end{equation}
+
+从而得到
+
+\begin{equation}
+    n(\lambda)\cos\theta
+    =
+    \sqrt{
+    n^2(\lambda)-\sin^2\theta_0
+    }.
+    \label{eq:ncostheta}
+\end{equation}
+
+\subsection{两束反射光的光程差}
+
+第一束光在空气--外延层界面直接发生反射；
+第二束光透射进入外延层，在外延层--衬底界面反射一次后再次穿过外延层并射出。
+
+对于厚度为 $d$ 的平行薄层，两束反射光由于传播路径不同所产生的有效光程差为
+
+\begin{equation}
+    \boxed{
+    \Delta L
+    =
+    2n(\lambda)d\cos\theta
+    }.
+    \label{eq:optical_path_difference}
+\end{equation}
+
+相应地，由传播路径产生的相位差为
+
+\begin{equation}
+    \Delta\phi_p
+    =
+    \frac{2\pi}{\lambda}\Delta L
+    =
+    \frac{4\pi n(\lambda)d\cos\theta}{\lambda}.
+    \label{eq:propagation_phase}
+\end{equation}
+
+此外，光在不同介质界面发生反射时可能产生附加相位突变。
+记两束反射光之间的相对反射附加相位差为 $\phi_r$，则总相位差为
+
+\begin{equation}
+    \boxed{
+    \Delta\phi
+    =
+    \frac{4\pi n(\lambda)d\cos\theta}{\lambda}
+    +
+    \phi_r
+    }.
+    \label{eq:total_phase}
+\end{equation}
+
+其中，$\phi_r$ 在给定光谱范围内可视为与干涉级次无关的常数。
+
+\subsection{双光束干涉强度}
+
+设两束反射光强分别为 $I_1$ 和 $I_2$，则其叠加后的光强满足
+
+\begin{equation}
+    I
+    =
+    I_1+I_2
+    +
+    2\sqrt{I_1I_2}\cos\Delta\phi.
+    \label{eq:interference_intensity}
+\end{equation}
+
+代入式 \eqref{eq:total_phase} 可得
+
+\begin{equation}
+    I(\lambda)
+    =
+    I_1+I_2
+    +
+    2\sqrt{I_1I_2}
+    \cos
+    \left(
+    \frac{4\pi n(\lambda)d\cos\theta}{\lambda}
+    +
+    \phi_r
+    \right).
+\end{equation}
+
+因此，随着波长变化，两束光之间的相位差周期性变化，从而在反射光谱中形成明暗相间的干涉条纹。
+
+\subsection{干涉极值条件}
+
+对于一系列相同类型的干涉极值，例如连续的反射率极大值，可将其相位条件统一表示为
+
+\begin{equation}
+    \Delta\phi
+    =
+    2\pi m+\phi_0,
+    \qquad m\in\mathbb{Z},
+\end{equation}
+
+其中 $\phi_0$ 为与反射性质有关的常数。
+
+代入式 \eqref{eq:total_phase}，并将固定相位项合并，可写为
+
+\begin{equation}
+    \frac{2n(\lambda)d\cos\theta}{\lambda}
+    =
+    m+C,
+    \label{eq:order_lambda}
+\end{equation}
+
+其中 $C$ 为与界面反射相位有关、但与干涉级次 $m$ 无关的常数。
+
+由于实验数据以波数为横坐标，定义
+
+\begin{equation}
+    \sigma=\frac{1}{\lambda},
+\end{equation}
+
+则式 \eqref{eq:order_lambda} 可以表示为
+
+\begin{equation}
+    2d\sigma n(\sigma)\cos\theta
+    =
+    m+C.
+    \label{eq:order_sigma}
+\end{equation}
+
+利用式 \eqref{eq:ncostheta} 消去折射角 $\theta$，得到
+
+\begin{equation}
+    \boxed{
+    2d\sigma
+    \sqrt{
+    n^2(\sigma)-\sin^2\theta_0
+    }
+    =
+    m+C
+    }.
+    \label{eq:main_interference_model}
+\end{equation}
+
+式 \eqref{eq:main_interference_model} 即为单次反射条件下外延层厚度与干涉条纹位置之间的基本数学关系。
+
+\subsection{外延层厚度计算公式}
+
+单个干涉极值对应的绝对干涉级次 $m$ 通常未知，因此采用两个同类型干涉极值消除未知级次和固定相位项。
+
+设两个同类型干涉极值的波数分别为 $\sigma_m$ 和 $\sigma_{m+k}$，二者相差 $k$ 个干涉级次，则有
+
+\begin{equation}
+    2d\sigma_m
+    \sqrt{
+    n^2(\sigma_m)-\sin^2\theta_0
+    }
+    =
+    m+C,
+\end{equation}
+
+以及
+
+\begin{equation}
+    2d\sigma_{m+k}
+    \sqrt{
+    n^2(\sigma_{m+k})-\sin^2\theta_0
+    }
+    =
+    m+k+C.
+\end{equation}
+
+两式相减，得到
+
+\begin{align}
+    2d
+    \Big[
+    &\sigma_{m+k}
+    \sqrt{
+    n^2(\sigma_{m+k})-\sin^2\theta_0
+    }
+    \nonumber\\
+    &-
+    \sigma_m
+    \sqrt{
+    n^2(\sigma_m)-\sin^2\theta_0
+    }
+    \Big]
+    =
+    k.
+\end{align}
+
+因此外延层厚度为
+
+\begin{equation}
+    \boxed{
+    d
+    =
+    \frac{k}{
+    2\left[
+    \sigma_{m+k}
+    \sqrt{
+    n^2(\sigma_{m+k})-\sin^2\theta_0
+    }
+    -
+    \sigma_m
+    \sqrt{
+    n^2(\sigma_m)-\sin^2\theta_0
+    }
+    \right]
+    }
+    }.
+    \label{eq:thickness_general}
+\end{equation}
+
+式 \eqref{eq:thickness_general} 为考虑外延层折射率随波数变化时的厚度计算公式。
+
+当选取相邻两个同类型干涉峰时，有 $k=1$，于是
+
+\begin{equation}
+    \boxed{
+    d
+    =
+    \frac{1}{
+    2\left[
+    \sigma_{m+1}
+    \sqrt{
+    n^2(\sigma_{m+1})-\sin^2\theta_0
+    }
+    -
+    \sigma_m
+    \sqrt{
+    n^2(\sigma_m)-\sin^2\theta_0
+    }
+    \right]
+    }
+    }.
+    \label{eq:thickness_adjacent}
+\end{equation}
+
+\subsection{折射率近似不变时的简化模型}
+
+若在局部光谱范围内外延层折射率变化较小，可近似认为
+
+\begin{equation}
+    n(\sigma)\approx n.
+\end{equation}
+
+定义相邻两个同类型干涉峰的波数间隔为
+
+\begin{equation}
+    \Delta\sigma
+    =
+    \sigma_{m+1}-\sigma_m,
+\end{equation}
+
+则式 \eqref{eq:thickness_adjacent} 可简化为
+
+\begin{equation}
+    \boxed{
+    d
+    =
+    \frac{1}{
+    2\Delta\sigma
+    \sqrt{
+    n^2-\sin^2\theta_0
+    }
+    }
+    }.
+    \label{eq:thickness_constant_n}
+\end{equation}
+
+由于
+
+\begin{equation}
+    n\cos\theta
+    =
+    \sqrt{n^2-\sin^2\theta_0},
+\end{equation}
+
+因此还可以写成经典形式
+
+\begin{equation}
+    \boxed{
+    d
+    =
+    \frac{1}{
+    2n\cos\theta\,\Delta\sigma
+    }
+    }.
+\end{equation}
+
+\subsection{基于多干涉峰的统一表达}
+
+为了充分利用光谱中的多个干涉峰并降低单个峰位置误差的影响，定义折射率修正波数
+
+\begin{equation}
+    F(\sigma)
+    =
+    \sigma
+    \sqrt{
+    n^2(\sigma)-\sin^2\theta_0
+    }.
+    \label{eq:F_sigma}
+\end{equation}
+
+则式 \eqref{eq:main_interference_model} 可以写为
+
+\begin{equation}
+    2dF(\sigma_m)
+    =
+    m+C,
+\end{equation}
+
+即
+
+\begin{equation}
+    F(\sigma_m)
+    =
+    \frac{1}{2d}m
+    +
+    \frac{C}{2d}.
+    \label{eq:linear_model}
+\end{equation}
+
+因此，理论上 $F(\sigma_m)$ 与干涉级次 $m$ 呈线性关系。
+若利用多个干涉峰进行线性拟合
+
+\begin{equation}
+    F(\sigma_m)=am+b,
+\end{equation}
+
+则拟合斜率满足
+
+\begin{equation}
+    a=\frac{1}{2d},
+\end{equation}
+
+从而有
+
+\begin{equation}
+    \boxed{
+    d=\frac{1}{2a}
+    }.
+    \label{eq:thickness_fit}
+\end{equation}
+
+该形式可作为后续基于实际红外反射光谱数据确定外延层厚度的理论基础。
+
+\end{document}
+
