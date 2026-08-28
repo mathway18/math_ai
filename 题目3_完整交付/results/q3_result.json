@@ -1,0 +1,1080 @@
+{
+  "problem": "2025 CUMCM B Question 3",
+  "scope": {
+    "user_request": "Complete Question 3 in an independent directory; preserve Question-2 and raw inputs.",
+    "question_3_tasks": [
+      "derive multi-beam necessary conditions and precision impact",
+      "test Attachments 3 and 4 for Si multi-beam interference",
+      "fit Si epitaxial thickness with the selected model",
+      "check and correct Attachments 1 and 2 for omitted higher-order returns"
+    ]
+  },
+  "input_audit": {
+    "rule": "Raw workbooks are unchanged; only an exact first 0% endpoint is removed in memory for fitting.",
+    "attachments": [
+      {
+        "attachment": 1,
+        "material": "SiC",
+        "angle_deg": 10.0,
+        "source_file": "data/附件1.xlsx",
+        "source_sha256": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+        "headers": [
+          "波数 (cm-1)",
+          "反射率 (%)"
+        ],
+        "source_rows": 7469,
+        "fitting_rows": 7468,
+        "removed_first_zero": true,
+        "wavenumber_cm_inv": {
+          "min": 399.6747,
+          "max": 4000.122,
+          "median_step": 0.4819999999999709,
+          "min_step": 0.48099999999976717,
+          "max_step": 0.4830000000001746,
+          "duplicate_count": 0
+        },
+        "reflectance_percent": {
+          "min": 0.0,
+          "max": 95.38499492,
+          "mean": 22.266821665287186,
+          "std": 17.58799774163155,
+          "zero_count": 1,
+          "above_100_count": 0
+        },
+        "processed_csv": "data\\processed\\附件1_clean.csv"
+      },
+      {
+        "attachment": 2,
+        "material": "SiC",
+        "angle_deg": 15.0,
+        "source_file": "data/附件2.xlsx",
+        "source_sha256": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+        "headers": [
+          "波数 (cm-1)",
+          "反射率 (%)"
+        ],
+        "source_rows": 7469,
+        "fitting_rows": 7468,
+        "removed_first_zero": true,
+        "wavenumber_cm_inv": {
+          "min": 399.6747,
+          "max": 4000.122,
+          "median_step": 0.4819999999999709,
+          "min_step": 0.48099999999976717,
+          "max_step": 0.4830000000001746,
+          "duplicate_count": 0
+        },
+        "reflectance_percent": {
+          "min": 0.0,
+          "max": 102.7393552,
+          "mean": 23.59146189164426,
+          "std": 18.983662289070462,
+          "zero_count": 1,
+          "above_100_count": 262
+        },
+        "processed_csv": "data\\processed\\附件2_clean.csv"
+      },
+      {
+        "attachment": 3,
+        "material": "Si",
+        "angle_deg": 10.0,
+        "source_file": "data/附件3.xlsx",
+        "source_sha256": "79e9f66a00409f1d1130d9f4f3d76b4d5e5a1ccd3ac2d24dc0af8ecc583d0ec8",
+        "headers": [
+          "波数 (cm-1)",
+          "反射率 (%)"
+        ],
+        "source_rows": 7469,
+        "fitting_rows": 7468,
+        "removed_first_zero": true,
+        "wavenumber_cm_inv": {
+          "min": 399.6747,
+          "max": 4000.122,
+          "median_step": 0.4819999999999709,
+          "min_step": 0.48099999999976717,
+          "max_step": 0.4830000000001746,
+          "duplicate_count": 0
+        },
+        "reflectance_percent": {
+          "min": 0.0,
+          "max": 79.8019744,
+          "mean": 32.09966928664078,
+          "std": 13.415530770636966,
+          "zero_count": 1,
+          "above_100_count": 0
+        },
+        "processed_csv": "data\\processed\\附件3_clean.csv"
+      },
+      {
+        "attachment": 4,
+        "material": "Si",
+        "angle_deg": 15.0,
+        "source_file": "data/附件4.xlsx",
+        "source_sha256": "9cf1400404c4560958da06685beb8c2e1e4df5918a6e13863663a54440ba12e3",
+        "headers": [
+          "波数 (cm-1)",
+          "反射率 (%)"
+        ],
+        "source_rows": 7469,
+        "fitting_rows": 7468,
+        "removed_first_zero": true,
+        "wavenumber_cm_inv": {
+          "min": 399.6747,
+          "max": 4000.122,
+          "median_step": 0.4819999999999709,
+          "min_step": 0.48099999999976717,
+          "max_step": 0.4830000000001746,
+          "duplicate_count": 0
+        },
+        "reflectance_percent": {
+          "min": 0.0,
+          "max": 91.48944351,
+          "mean": 35.351663670734375,
+          "std": 15.01652332847094,
+          "zero_count": 1,
+          "above_100_count": 0
+        },
+        "processed_csv": "data\\processed\\附件4_clean.csv"
+      }
+    ]
+  },
+  "model_assumptions": {
+    "geometry": "air--epitaxial layer--substrate",
+    "phase": "delta = 4*pi*sigma*n_layer*cos(theta_layer)*d, sigma in cm^-1 and d in cm inside the phase",
+    "polarisation": "unpolarised; arithmetic mean of s and p intensities",
+    "silicon_background": {
+      "model": "Sellmeier",
+      "wavelength_um_validity": [
+        1.357,
+        11.04
+      ],
+      "coefficients_B": [
+        10.6684293,
+        0.0030434748,
+        1.54133408
+      ],
+      "coefficients_C": [
+        0.0909121907,
+        1.287660172,
+        1218816.0
+      ]
+    },
+    "silicon_free_carrier": "separate lossless Drude surrogates for epitaxial layer and substrate on the selected transparent band",
+    "measurement_calibration": "per-angle bounded affine scale [0.25,1.75] and offset [-30,30] percent, analytically eliminated",
+    "eta_definition": "eta=0 first-return truncation; eta=1 exact coherent Airy sum; fitted eta in [0,1] is a partial-coherence diagnostic",
+    "sic_constants": {
+      "eps_inf": 6.56,
+      "omega_L_cm_inv": 970.0,
+      "omega_T_cm_inv": 798.0
+    },
+    "shared_si_parameters_across_angles": [
+      "d_um",
+      "omega_p_layer_cm_inv",
+      "omega_p_substrate_cm_inv"
+    ]
+  },
+  "multi_beam_conditions": {
+    "successive_optical_path_difference": "Delta L = 2*n_layer*d*cos(theta_layer)",
+    "phase_difference": "Delta phi = 4*pi*sigma*n_layer*d*cos(theta_layer)",
+    "coherence_condition": "source/instrument coherence length must not be much shorter than Delta L",
+    "amplitude_condition": "rho = |r10*r12*exp(i*Delta phi)| must be non-negligible; rho is the amplitude ratio of successive internal returns",
+    "spectral_resolution_condition": "the instrument must resolve the phase variation rather than average it over many fringe periods",
+    "necessary_not_sufficient_note": "These conditions are necessary for an observable multi-beam contribution; roughness, finite aperture, nonuniformity and averaging can still suppress it.",
+    "precision_impact": "when rho is non-negligible, the Airy denominator changes line shape and extrema positions; fitting only the first return creates model bias in d, while the exact sum can recover the phase more efficiently."
+  },
+  "si_band_selection": {
+    "sellmeier_valid_band_cm_inv": [
+      1000.0,
+      3600.0
+    ],
+    "selection_rule": "Maximise the lower dual-angle FFT peak-to-median ratio after penalising angle disagreement.",
+    "candidates": [
+      {
+        "band_cm_inv": [
+          1000.0,
+          2400.0
+        ],
+        "attachment_3": {
+          "band_cm_inv": [
+            1000.0,
+            2400.0
+          ],
+          "d_fft_um": 3.128730969714198,
+          "peak_to_median": 2.1346811732927877
+        },
+        "attachment_4": {
+          "band_cm_inv": [
+            1000.0,
+            2400.0
+          ],
+          "d_fft_um": 3.1336543461198763,
+          "peak_to_median": 2.0387730104568123
+        },
+        "relative_angle_gap": 0.0015723645727227758,
+        "score": 1.976613858360048
+      },
+      {
+        "band_cm_inv": [
+          1200.0,
+          2600.0
+        ],
+        "attachment_3": {
+          "band_cm_inv": [
+            1200.0,
+            2600.0
+          ],
+          "d_fft_um": 3.1269722535018087,
+          "peak_to_median": 2.9738051492640634
+        },
+        "attachment_4": {
+          "band_cm_inv": [
+            1200.0,
+            2600.0
+          ],
+          "d_fft_um": 3.1318839110788885,
+          "peak_to_median": 2.8168877229040135
+        },
+        "relative_angle_gap": 0.0015695064554687162,
+        "score": 2.731156371776072
+      },
+      {
+        "band_cm_inv": [
+          1400.0,
+          2800.0
+        ],
+        "attachment_3": {
+          "band_cm_inv": [
+            1400.0,
+            2800.0
+          ],
+          "d_fft_um": 3.122743227824404,
+          "peak_to_median": 3.396346107829612
+        },
+        "attachment_4": {
+          "band_cm_inv": [
+            1400.0,
+            2800.0
+          ],
+          "d_fft_um": 3.1276383110423827,
+          "peak_to_median": 2.9796239162158313
+        },
+        "relative_angle_gap": 0.0015663310111677104,
+        "score": 2.8891176255787276
+      },
+      {
+        "band_cm_inv": [
+          1600.0,
+          3000.0
+        ],
+        "attachment_3": {
+          "band_cm_inv": [
+            1600.0,
+            3000.0
+          ],
+          "d_fft_um": 3.119271743681318,
+          "peak_to_median": 4.173470099003401
+        },
+        "attachment_4": {
+          "band_cm_inv": [
+            1600.0,
+            3000.0
+          ],
+          "d_fft_um": 3.124150465972737,
+          "peak_to_median": 3.229352333818435
+        },
+        "relative_angle_gap": 0.0015628359343934754,
+        "score": 3.1314727703566727
+      },
+      {
+        "band_cm_inv": [
+          1800.0,
+          3200.0
+        ],
+        "attachment_3": {
+          "band_cm_inv": [
+            1800.0,
+            3200.0
+          ],
+          "d_fft_um": 3.1154863205966126,
+          "peak_to_median": 4.186538204904488
+        },
+        "attachment_4": {
+          "band_cm_inv": [
+            1800.0,
+            3200.0
+          ],
+          "d_fft_um": 3.1203472309054936,
+          "peak_to_median": 3.3150389214895224
+        },
+        "relative_angle_gap": 0.0015590250344992348,
+        "score": 3.2147998524713755
+      },
+      {
+        "band_cm_inv": [
+          2000.0,
+          3400.0
+        ],
+        "attachment_3": {
+          "band_cm_inv": [
+            2000.0,
+            3400.0
+          ],
+          "d_fft_um": 3.111380264864132,
+          "peak_to_median": 5.669957416421153
+        },
+        "attachment_4": {
+          "band_cm_inv": [
+            2000.0,
+            3400.0
+          ],
+          "d_fft_um": 3.1162219109024503,
+          "peak_to_median": 4.512994551254652
+        },
+        "relative_angle_gap": 0.0015548989487987937,
+        "score": 4.376882355774458
+      }
+    ],
+    "selected": {
+      "band_cm_inv": [
+        2000.0,
+        3400.0
+      ],
+      "attachment_3": {
+        "band_cm_inv": [
+          2000.0,
+          3400.0
+        ],
+        "d_fft_um": 3.111380264864132,
+        "peak_to_median": 5.669957416421153
+      },
+      "attachment_4": {
+        "band_cm_inv": [
+          2000.0,
+          3400.0
+        ],
+        "d_fft_um": 3.1162219109024503,
+        "peak_to_median": 4.512994551254652
+      },
+      "relative_angle_gap": 0.0015548989487987937,
+      "score": 4.376882355774458
+    }
+  },
+  "si_peak_initialisation": {
+    "records": {
+      "attachment_3": {
+        "attachment": 3,
+        "angle_deg": 10.0,
+        "band_cm_inv": [
+          2000.0,
+          3400.0
+        ],
+        "smoothing": {
+          "method": "Savitzky-Golay",
+          "window_points": 101,
+          "polynomial_order": 3
+        },
+        "peaks_cm_inv": [
+          2380.21,
+          2782.778,
+          3207.522
+        ],
+        "peak_prominence_percent": [
+          4.107847771802835,
+          2.337099649196361,
+          1.2531053011213942
+        ],
+        "successive_spacing_cm_inv": [
+          402.56799999999976,
+          424.74400000000014
+        ],
+        "median_spacing_cm_inv": 413.65599999999995,
+        "n_initial": 3.4274528335620573,
+        "d_initial_um": 3.531159106361409
+      },
+      "attachment_4": {
+        "attachment": 4,
+        "angle_deg": 15.0,
+        "band_cm_inv": [
+          2000.0,
+          3400.0
+        ],
+        "smoothing": {
+          "method": "Savitzky-Golay",
+          "window_points": 101,
+          "polynomial_order": 3
+        },
+        "peaks_cm_inv": [
+          2395.156,
+          2806.883,
+          3250.913
+        ],
+        "peak_prominence_percent": [
+          4.588395798729092,
+          2.5205996530988024,
+          1.1671795908146336
+        ],
+        "successive_spacing_cm_inv": [
+          411.72699999999986,
+          444.0300000000002
+        ],
+        "median_spacing_cm_inv": 427.87850000000003,
+        "n_initial": 3.427647197606923,
+        "d_initial_um": 3.418968229086337
+      }
+    },
+    "mean_d_initial_um": 3.475063667723873,
+    "role": "Initial scale and diagnostic only; final thickness is obtained by spectral inversion."
+  },
+  "si_models": {
+    "two_beam": {
+      "mode": "two_beam",
+      "model_definition": {
+        "eta": "0 for Question-1 two-beam truncation; 1 for exact coherent Airy sum; fitted in [0,1] for partial_multibeam.",
+        "physical_parameters": [
+          "d_um",
+          "omega_p_layer_cm_inv",
+          "omega_p_substrate_cm_inv"
+        ],
+        "calibration": "per-angle bounded scale and offset solved analytically inside every objective evaluation"
+      },
+      "parameters": {
+        "d_um": 3.3949163255921517,
+        "omega_p_layer_cm_inv": 488.420764882105,
+        "omega_p_substrate_cm_inv": 5000.0,
+        "eta": 0.0
+      },
+      "calibration": {
+        "attachment_3": {
+          "scale": 0.25803124939235556,
+          "offset_percent": 20.172603817009012
+        },
+        "attachment_4": {
+          "scale": 0.2910801273367161,
+          "offset_percent": 21.80952741175403
+        }
+      },
+      "metrics": {
+        "attachment_3": {
+          "sse_percent_squared": 334.51868532200774,
+          "rmse_percent": 0.3394000364654628,
+          "mae_percent": 0.27975812319573334,
+          "max_abs_residual_percent": 0.8737349449862357,
+          "mean_residual_percent": 2.0748630851396866e-15,
+          "residual_q50_abs_percent": 0.24883960865420107,
+          "residual_q95_abs_percent": 0.7027545872081542,
+          "r2": 0.9407528839445775
+        },
+        "attachment_4": {
+          "sse_percent_squared": 357.4353506921982,
+          "rmse_percent": 0.3508330064970037,
+          "mae_percent": 0.28746216210149456,
+          "max_abs_residual_percent": 0.7667331035943548,
+          "mean_residual_percent": -1.3897667834426202e-15,
+          "residual_q50_abs_percent": 0.230791485049485,
+          "residual_q95_abs_percent": 0.6820172077778379,
+          "r2": 0.9498839053249026
+        }
+      },
+      "n_observations": 5808,
+      "parameter_count_for_ic": 7,
+      "information_criteria": {
+        "aic": -12342.357521419464,
+        "bic": -12295.688580523933
+      },
+      "bounds": {
+        "d_um": [
+          2.0,
+          5.5
+        ],
+        "omega_p_layer_cm_inv": [
+          0.0,
+          5000.0
+        ],
+        "omega_p_substrate_cm_inv": [
+          0.0,
+          5000.0
+        ]
+      },
+      "optimizer": {
+        "global_method": "differential_evolution",
+        "local_method": "L-BFGS-B",
+        "seeds": [
+          2025,
+          2718,
+          3141
+        ],
+        "selected_subsample_start": "seed_2718",
+        "selected_subsample_mse_percent_squared": 0.11902144375018112,
+        "full_success": true,
+        "full_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "full_nit": 16,
+        "full_nfev": 72,
+        "full_mse_percent_squared": 0.11913809160024207,
+        "seed_records": [
+          {
+            "seed": 2025,
+            "de_subsample_mse_percent_squared": 0.11902416670321934,
+            "local_subsample_mse_percent_squared": 0.11902144375082263,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          },
+          {
+            "seed": 2718,
+            "de_subsample_mse_percent_squared": 0.11902876465212543,
+            "local_subsample_mse_percent_squared": 0.11902144375018112,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          },
+          {
+            "seed": 3141,
+            "de_subsample_mse_percent_squared": 0.11904118629507777,
+            "local_subsample_mse_percent_squared": 0.11902144375115453,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          }
+        ]
+      },
+      "round_trip_strength": {
+        "attachment_3": {
+          "median": 0.046789425561565304,
+          "p95": 0.09266712469058924,
+          "maximum": 0.10233398164492646
+        },
+        "attachment_4": {
+          "median": 0.0467879574108034,
+          "p95": 0.09266612274792697,
+          "maximum": 0.10233335026652765
+        }
+      }
+    },
+    "full_multibeam": {
+      "mode": "full_multibeam",
+      "model_definition": {
+        "eta": "0 for Question-1 two-beam truncation; 1 for exact coherent Airy sum; fitted in [0,1] for partial_multibeam.",
+        "physical_parameters": [
+          "d_um",
+          "omega_p_layer_cm_inv",
+          "omega_p_substrate_cm_inv"
+        ],
+        "calibration": "per-angle bounded scale and offset solved analytically inside every objective evaluation"
+      },
+      "parameters": {
+        "d_um": 3.3903085578519123,
+        "omega_p_layer_cm_inv": 0.0,
+        "omega_p_substrate_cm_inv": 4918.266334530403,
+        "eta": 1.0
+      },
+      "calibration": {
+        "attachment_3": {
+          "scale": 0.2662652598339528,
+          "offset_percent": 19.90717105687741
+        },
+        "attachment_4": {
+          "scale": 0.3002429930172985,
+          "offset_percent": 21.51444272870044
+        }
+      },
+      "metrics": {
+        "attachment_3": {
+          "sse_percent_squared": 317.45422351418176,
+          "rmse_percent": 0.3306299936033825,
+          "mae_percent": 0.26773286474968866,
+          "max_abs_residual_percent": 0.9046614182677573,
+          "mean_residual_percent": 1.0961540827153061e-15,
+          "residual_q50_abs_percent": 0.23107793606753013,
+          "residual_q95_abs_percent": 0.7123232088429222,
+          "r2": 0.9437751968780937
+        },
+        "attachment_4": {
+          "sse_percent_squared": 349.65124884533486,
+          "rmse_percent": 0.34699181921933386,
+          "mae_percent": 0.2823433955644585,
+          "max_abs_residual_percent": 0.939711290129992,
+          "mean_residual_percent": -1.242960433078963e-15,
+          "residual_q50_abs_percent": 0.21081902116403306,
+          "residual_q95_abs_percent": 0.6629326352191122,
+          "r2": 0.9509753160775395
+        }
+      },
+      "n_observations": 5808,
+      "parameter_count_for_ic": 7,
+      "information_criteria": {
+        "aic": -12554.764030119512,
+        "bic": -12508.09508922398
+      },
+      "bounds": {
+        "d_um": [
+          2.0,
+          5.5
+        ],
+        "omega_p_layer_cm_inv": [
+          0.0,
+          5000.0
+        ],
+        "omega_p_substrate_cm_inv": [
+          0.0,
+          5000.0
+        ]
+      },
+      "optimizer": {
+        "global_method": "differential_evolution",
+        "local_method": "L-BFGS-B",
+        "seeds": [
+          2025,
+          2718,
+          3141
+        ],
+        "selected_subsample_start": "seed_2025",
+        "selected_subsample_mse_percent_squared": 0.11493793220555534,
+        "full_success": true,
+        "full_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "full_nit": 17,
+        "full_nfev": 80,
+        "full_mse_percent_squared": 0.11485975763765782,
+        "seed_records": [
+          {
+            "seed": 2025,
+            "de_subsample_mse_percent_squared": 0.11494008728134954,
+            "local_subsample_mse_percent_squared": 0.11493793220555534,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          },
+          {
+            "seed": 2718,
+            "de_subsample_mse_percent_squared": 0.11494090946301651,
+            "local_subsample_mse_percent_squared": 0.11493793220557617,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          },
+          {
+            "seed": 3141,
+            "de_subsample_mse_percent_squared": 0.11494163699603371,
+            "local_subsample_mse_percent_squared": 0.11493793220559957,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          }
+        ]
+      },
+      "round_trip_strength": {
+        "attachment_3": {
+          "median": 0.0454028798552059,
+          "p95": 0.08922717226378439,
+          "maximum": 0.09835743561989492
+        },
+        "attachment_4": {
+          "median": 0.04540140994552298,
+          "p95": 0.08922598346607145,
+          "maximum": 0.09835654215411499
+        }
+      }
+    },
+    "partial_multibeam": {
+      "mode": "partial_multibeam",
+      "model_definition": {
+        "eta": "0 for Question-1 two-beam truncation; 1 for exact coherent Airy sum; fitted in [0,1] for partial_multibeam.",
+        "physical_parameters": [
+          "d_um",
+          "omega_p_layer_cm_inv",
+          "omega_p_substrate_cm_inv",
+          "eta"
+        ],
+        "calibration": "per-angle bounded scale and offset solved analytically inside every objective evaluation"
+      },
+      "parameters": {
+        "d_um": 3.390020843319964,
+        "omega_p_layer_cm_inv": 0.0,
+        "omega_p_substrate_cm_inv": 5000.0,
+        "eta": 0.7115112818269347
+      },
+      "calibration": {
+        "attachment_3": {
+          "scale": 0.25599605704232575,
+          "offset_percent": 20.21308871106804
+        },
+        "attachment_4": {
+          "scale": 0.28863225232493817,
+          "offset_percent": 21.860249280604226
+        }
+      },
+      "metrics": {
+        "attachment_3": {
+          "sse_percent_squared": 315.6696083867116,
+          "rmse_percent": 0.32969934149243924,
+          "mae_percent": 0.26930514498316804,
+          "max_abs_residual_percent": 0.8719062321082234,
+          "mean_residual_percent": 1.605082763975984e-15,
+          "residual_q50_abs_percent": 0.23569438083653083,
+          "residual_q95_abs_percent": 0.6954451530876438,
+          "r2": 0.9440912727931647
+        },
+        "attachment_4": {
+          "sse_percent_squared": 346.384874020585,
+          "rmse_percent": 0.34536725074314206,
+          "mae_percent": 0.28176131296702767,
+          "max_abs_residual_percent": 0.8659323690302259,
+          "mean_residual_percent": -2.2412436155518313e-15,
+          "residual_q50_abs_percent": 0.1998038311068484,
+          "residual_q95_abs_percent": 0.6525989233857579,
+          "r2": 0.9514332952607526
+        }
+      },
+      "n_observations": 5808,
+      "parameter_count_for_ic": 8,
+      "information_criteria": {
+        "aic": -12596.90663425584,
+        "bic": -12543.570701803803
+      },
+      "bounds": {
+        "d_um": [
+          2.0,
+          5.5
+        ],
+        "omega_p_layer_cm_inv": [
+          0.0,
+          5000.0
+        ],
+        "omega_p_substrate_cm_inv": [
+          0.0,
+          5000.0
+        ],
+        "eta": [
+          0.0,
+          1.0
+        ]
+      },
+      "optimizer": {
+        "global_method": "differential_evolution",
+        "local_method": "L-BFGS-B",
+        "seeds": [
+          2025,
+          2718,
+          3141
+        ],
+        "selected_subsample_start": "seed_2025",
+        "selected_subsample_mse_percent_squared": 0.11399680252649118,
+        "full_success": true,
+        "full_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "full_nit": 32,
+        "full_nfev": 205,
+        "full_mse_percent_squared": 0.11399009683321223,
+        "seed_records": [
+          {
+            "seed": 2025,
+            "de_subsample_mse_percent_squared": 0.1140009076332571,
+            "local_subsample_mse_percent_squared": 0.11399680252649118,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          },
+          {
+            "seed": 2718,
+            "de_subsample_mse_percent_squared": 0.11400945834432542,
+            "local_subsample_mse_percent_squared": 0.11399686869866388,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          },
+          {
+            "seed": 3141,
+            "de_subsample_mse_percent_squared": 0.3444320849507795,
+            "local_subsample_mse_percent_squared": 0.34442048017024934,
+            "local_success": true,
+            "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+          }
+        ]
+      },
+      "round_trip_strength": {
+        "attachment_3": {
+          "median": 0.04721072699438203,
+          "p95": 0.09344181917621772,
+          "maximum": 0.10317552435509877
+        },
+        "attachment_4": {
+          "median": 0.04720923245807292,
+          "p95": 0.09344075379797523,
+          "maximum": 0.10317481969578599
+        }
+      }
+    }
+  },
+  "si_individual_angle_diagnostics": [
+    {
+      "attachment": 3,
+      "angle_deg": 10.0,
+      "d_um": 3.4046422070309825,
+      "omega_p_layer_cm_inv": 0.0,
+      "omega_p_substrate_cm_inv": 5000.0,
+      "eta": 0.7057523365422795,
+      "mse_percent_squared": 0.05854870173801151,
+      "success": true,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "attachment": 4,
+      "angle_deg": 15.0,
+      "d_um": 3.3783017460391918,
+      "omega_p_layer_cm_inv": 0.0,
+      "omega_p_substrate_cm_inv": 5000.0,
+      "eta": 0.64303336517701,
+      "mse_percent_squared": 0.07976137122796882,
+      "success": true,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    }
+  ],
+  "si_substrate_sensitivity": {
+    "purpose": "Conditional sensitivity to the silicon substrate Drude surrogate that reached the primary search bound.",
+    "selected_model": "partial_multibeam",
+    "fixed_values_cm_inv": [
+      3000.0,
+      4000.0,
+      5000.0,
+      6500.0,
+      8000.0
+    ],
+    "reoptimised_parameters": [
+      "d_um",
+      "omega_p_layer_cm_inv",
+      "eta"
+    ],
+    "comparison_rule": "Comparable means relative full-band MSE <= 1.20 times the selected fit; this is a transparent diagnostic threshold, not a confidence interval.",
+    "reference_d_um": 3.390020843319964,
+    "reference_mse_percent_squared": 0.11399009683321223,
+    "records": [
+      {
+        "fixed_omega_p_substrate_cm_inv": 3000.0,
+        "d_um": 3.402324200202246,
+        "omega_p_layer_cm_inv": 759.7612434524723,
+        "eta": 1.0,
+        "mse_percent_squared": 0.13072007573220984,
+        "relative_mse_to_selected": 1.1467669504963798,
+        "calibration": {
+          "attachment_3": {
+            "scale": 0.8615278785487517,
+            "offset_percent": 2.216994778556456
+          },
+          "attachment_4": {
+            "scale": 0.9743921344320635,
+            "offset_percent": 1.47811095002876
+          }
+        },
+        "success": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+      },
+      {
+        "fixed_omega_p_substrate_cm_inv": 4000.0,
+        "d_um": 3.388881453333277,
+        "omega_p_layer_cm_inv": 0.0,
+        "eta": 1.0,
+        "mse_percent_squared": 0.12197256867844135,
+        "relative_mse_to_selected": 1.070027766156817,
+        "calibration": {
+          "attachment_3": {
+            "scale": 0.4339869834096522,
+            "offset_percent": 14.914258661896845
+          },
+          "attachment_4": {
+            "scale": 0.48976073385560714,
+            "offset_percent": 15.872419674978648
+          }
+        },
+        "success": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+      },
+      {
+        "fixed_omega_p_substrate_cm_inv": 5000.0,
+        "d_um": 3.3900208426282976,
+        "omega_p_layer_cm_inv": 0.0,
+        "eta": 0.711508810190823,
+        "mse_percent_squared": 0.11399009683320918,
+        "relative_mse_to_selected": 0.9999999999999732,
+        "calibration": {
+          "attachment_3": {
+            "scale": 0.25599606228508526,
+            "offset_percent": 20.213088581533142
+          },
+          "attachment_4": {
+            "scale": 0.2886322550960497,
+            "offset_percent": 21.8602492287886
+          }
+        },
+        "success": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+      },
+      {
+        "fixed_omega_p_substrate_cm_inv": 6500.0,
+        "d_um": 3.4028341761649217,
+        "omega_p_layer_cm_inv": 0.0,
+        "eta": 0.0,
+        "mse_percent_squared": 2.1736556225535453,
+        "relative_mse_to_selected": 19.068811089212335,
+        "calibration": {
+          "attachment_3": {
+            "scale": 0.25,
+            "offset_percent": 20.086969539937357
+          },
+          "attachment_4": {
+            "scale": 0.25,
+            "offset_percent": 22.710360253169906
+          }
+        },
+        "success": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+      },
+      {
+        "fixed_omega_p_substrate_cm_inv": 8000.0,
+        "d_um": 2.0913927246027764,
+        "omega_p_layer_cm_inv": 0.0,
+        "eta": 0.32999365071663983,
+        "mse_percent_squared": 36.69047179340709,
+        "relative_mse_to_selected": 321.8742049766987,
+        "calibration": {
+          "attachment_3": {
+            "scale": 0.25,
+            "offset_percent": 16.757724947453795
+          },
+          "attachment_4": {
+            "scale": 0.25,
+            "offset_percent": 19.376918165759825
+          }
+        },
+        "success": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+      }
+    ],
+    "summary": {
+      "all_trials_minimum_d_um": 2.0913927246027764,
+      "all_trials_maximum_d_um": 3.4028341761649217,
+      "comparable_trial_count": 3,
+      "comparable_minimum_d_um": 3.388881453333277,
+      "comparable_maximum_d_um": 3.402324200202246,
+      "comparable_span_um": 0.013442746868968847,
+      "comparable_maximum_relative_deviation": 0.0036292865002661824
+    }
+  },
+  "si_model_selection": {
+    "delta_bic_two_minus_full": 212.4065087000472,
+    "delta_bic_two_minus_partial": 247.88212127987026,
+    "partial_fitted_eta": 0.7115112818269347,
+    "selection_rule": "Select partial multibeam only when Delta BIC(two minus partial)>=10 and fitted eta>=0.05; retain full eta=1 as the physical coherent-sum sensitivity model.",
+    "selected_model": "partial_multibeam",
+    "selected_thickness_um": 3.390020843319964
+  },
+  "sic_correction": {
+    "model": "SiC_exact_Airy_eta_1",
+    "purpose": "Question-3 correction check for omitted higher-order returns in Attachments 1 and 2.",
+    "reference_q2_source": "F:\\数学建模\\2025B\\题目2_完整交付\\results\\q2_fit.json",
+    "reference_q2_parameters": {
+      "d_um": 7.400452153256163,
+      "gamma_L_cm_inv": 0.1,
+      "gamma_T_cm_inv": 2.5580835553030545,
+      "omega_p_layer_cm_inv": 473.8485626664637,
+      "gamma_p_layer_cm_inv": 1184.1327484848778,
+      "omega_p_substrate_cm_inv": 1123.2584342176108,
+      "gamma_p_substrate_cm_inv": 611.5947931686339
+    },
+    "local_search_bounds": {
+      "d_um": [
+        6.8,
+        8.0
+      ],
+      "gamma_L_cm_inv": [
+        0.1,
+        1500.0
+      ],
+      "gamma_T_cm_inv": [
+        0.1,
+        1500.0
+      ],
+      "omega_p_layer_cm_inv": [
+        1.0,
+        5000.0
+      ],
+      "gamma_p_layer_cm_inv": [
+        0.1,
+        2000.0
+      ],
+      "omega_p_substrate_cm_inv": [
+        1.0,
+        5000.0
+      ],
+      "gamma_p_substrate_cm_inv": [
+        0.1,
+        2000.0
+      ]
+    },
+    "eta": 1.0,
+    "parameters": {
+      "d_um": 7.3994759181140015,
+      "gamma_L_cm_inv": 0.1,
+      "gamma_T_cm_inv": 2.571899595954458,
+      "omega_p_layer_cm_inv": 472.8299775725245,
+      "gamma_p_layer_cm_inv": 1186.345641055967,
+      "omega_p_substrate_cm_inv": 1123.268943846153,
+      "gamma_p_substrate_cm_inv": 606.6758090979037
+    },
+    "calibration": {
+      "attachment_1": {
+        "scale": 0.9755734349438804,
+        "offset_percent": 0.02872341335406747
+      },
+      "attachment_2": {
+        "scale": 1.0524139888586088,
+        "offset_percent": -0.4070746949110998
+      }
+    },
+    "metrics": {
+      "attachment_1": {
+        "sse_percent_squared": 2013.730831632821,
+        "rmse_percent": 0.5192763638988587,
+        "mae_percent": 0.23745972337991855,
+        "max_abs_residual_percent": 6.435068633615218,
+        "mean_residual_percent": 7.692471904955021e-16,
+        "residual_q50_abs_percent": 0.12198248301645087,
+        "residual_q95_abs_percent": 0.7565678023590444,
+        "r2": 0.9991282351021119
+      },
+      "attachment_2": {
+        "sse_percent_squared": 4795.700035996175,
+        "rmse_percent": 0.8013529698060331,
+        "mae_percent": 0.3730710359633373,
+        "max_abs_residual_percent": 13.376891284544016,
+        "mean_residual_percent": 2.5879435474925984e-16,
+        "residual_q50_abs_percent": 0.21775935059864793,
+        "residual_q95_abs_percent": 1.183691937345334,
+        "r2": 0.9982179521016623
+      }
+    },
+    "n_observations": 14936,
+    "full_mse_percent_squared": 0.45590726216048444,
+    "reference_two_beam_mse_percent_squared": 0.46658377677528284,
+    "delta_thickness_um": -0.0009762351421613857,
+    "relative_delta_thickness": -0.00013191560757971348,
+    "optimizer": {
+      "method": "three deterministic local L-BFGS-B starts",
+      "success": true,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "nfev": 760
+    },
+    "round_trip_strength": {
+      "attachment_1": {
+        "median": 0.0030010833007275907,
+        "p95": 0.02267812230356522,
+        "maximum": 0.06740311920317424
+      },
+      "attachment_2": {
+        "median": 0.002998713857317724,
+        "p95": 0.022580388520253493,
+        "maximum": 0.061356862424596974
+      }
+    }
+  },
+  "prediction_files": {
+    "si": "results/q3_si_predictions.csv",
+    "sic_correction": "results/q3_sic_correction_predictions.csv"
+  },
+  "environment": {
+    "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "numpy": "2.3.1",
+    "scipy": "1.16.0",
+    "openpyxl": "3.1.5",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}

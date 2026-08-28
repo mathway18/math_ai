@@ -1,0 +1,38 @@
+{
+  "figures": {
+    "input_and_band": {
+      "pdf": "figures\\fig_q3_input_and_band.pdf",
+      "png": "figures\\fig_q3_input_and_band.png"
+    },
+    "si_model_comparison": {
+      "pdf": "figures\\fig_q3_si_model_comparison.pdf",
+      "png": "figures\\fig_q3_si_model_comparison.png"
+    },
+    "model_metrics": {
+      "pdf": "figures\\fig_q3_model_metrics.pdf",
+      "png": "figures\\fig_q3_model_metrics.png"
+    },
+    "round_trip_strength": {
+      "pdf": "figures\\fig_q3_round_trip_strength.pdf",
+      "png": "figures\\fig_q3_round_trip_strength.png"
+    },
+    "substrate_sensitivity": {
+      "pdf": "figures\\fig_q3_substrate_sensitivity.pdf",
+      "png": "figures\\fig_q3_substrate_sensitivity.png"
+    },
+    "sic_correction": {
+      "pdf": "figures\\fig_q3_sic_correction.pdf",
+      "png": "figures\\fig_q3_sic_correction.png"
+    },
+    "workflow": {
+      "pdf": "figures\\fig_q3_workflow.pdf",
+      "png": "figures\\fig_q3_workflow.png"
+    }
+  },
+  "source": [
+    "results/q3_result.json",
+    "results/q3_si_predictions.csv",
+    "results/q3_sic_correction_predictions.csv"
+  ],
+  "note": "Figures are deterministic renderings of the saved Q3 results; this script does not optimize parameters."
+}

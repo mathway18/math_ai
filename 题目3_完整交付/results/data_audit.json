@@ -1,0 +1,129 @@
+{
+  "rule": "Raw workbooks are unchanged; only an exact first 0% endpoint is removed in memory for fitting.",
+  "attachments": [
+    {
+      "attachment": 1,
+      "material": "SiC",
+      "angle_deg": 10.0,
+      "source_file": "data/附件1.xlsx",
+      "source_sha256": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+      "headers": [
+        "波数 (cm-1)",
+        "反射率 (%)"
+      ],
+      "source_rows": 7469,
+      "fitting_rows": 7468,
+      "removed_first_zero": true,
+      "wavenumber_cm_inv": {
+        "min": 399.6747,
+        "max": 4000.122,
+        "median_step": 0.4819999999999709,
+        "min_step": 0.48099999999976717,
+        "max_step": 0.4830000000001746,
+        "duplicate_count": 0
+      },
+      "reflectance_percent": {
+        "min": 0.0,
+        "max": 95.38499492,
+        "mean": 22.266821665287186,
+        "std": 17.58799774163155,
+        "zero_count": 1,
+        "above_100_count": 0
+      },
+      "processed_csv": "data\\processed\\附件1_clean.csv"
+    },
+    {
+      "attachment": 2,
+      "material": "SiC",
+      "angle_deg": 15.0,
+      "source_file": "data/附件2.xlsx",
+      "source_sha256": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+      "headers": [
+        "波数 (cm-1)",
+        "反射率 (%)"
+      ],
+      "source_rows": 7469,
+      "fitting_rows": 7468,
+      "removed_first_zero": true,
+      "wavenumber_cm_inv": {
+        "min": 399.6747,
+        "max": 4000.122,
+        "median_step": 0.4819999999999709,
+        "min_step": 0.48099999999976717,
+        "max_step": 0.4830000000001746,
+        "duplicate_count": 0
+      },
+      "reflectance_percent": {
+        "min": 0.0,
+        "max": 102.7393552,
+        "mean": 23.59146189164426,
+        "std": 18.983662289070462,
+        "zero_count": 1,
+        "above_100_count": 262
+      },
+      "processed_csv": "data\\processed\\附件2_clean.csv"
+    },
+    {
+      "attachment": 3,
+      "material": "Si",
+      "angle_deg": 10.0,
+      "source_file": "data/附件3.xlsx",
+      "source_sha256": "79e9f66a00409f1d1130d9f4f3d76b4d5e5a1ccd3ac2d24dc0af8ecc583d0ec8",
+      "headers": [
+        "波数 (cm-1)",
+        "反射率 (%)"
+      ],
+      "source_rows": 7469,
+      "fitting_rows": 7468,
+      "removed_first_zero": true,
+      "wavenumber_cm_inv": {
+        "min": 399.6747,
+        "max": 4000.122,
+        "median_step": 0.4819999999999709,
+        "min_step": 0.48099999999976717,
+        "max_step": 0.4830000000001746,
+        "duplicate_count": 0
+      },
+      "reflectance_percent": {
+        "min": 0.0,
+        "max": 79.8019744,
+        "mean": 32.09966928664078,
+        "std": 13.415530770636966,
+        "zero_count": 1,
+        "above_100_count": 0
+      },
+      "processed_csv": "data\\processed\\附件3_clean.csv"
+    },
+    {
+      "attachment": 4,
+      "material": "Si",
+      "angle_deg": 15.0,
+      "source_file": "data/附件4.xlsx",
+      "source_sha256": "9cf1400404c4560958da06685beb8c2e1e4df5918a6e13863663a54440ba12e3",
+      "headers": [
+        "波数 (cm-1)",
+        "反射率 (%)"
+      ],
+      "source_rows": 7469,
+      "fitting_rows": 7468,
+      "removed_first_zero": true,
+      "wavenumber_cm_inv": {
+        "min": 399.6747,
+        "max": 4000.122,
+        "median_step": 0.4819999999999709,
+        "min_step": 0.48099999999976717,
+        "max_step": 0.4830000000001746,
+        "duplicate_count": 0
+      },
+      "reflectance_percent": {
+        "min": 0.0,
+        "max": 91.48944351,
+        "mean": 35.351663670734375,
+        "std": 15.01652332847094,
+        "zero_count": 1,
+        "above_100_count": 0
+      },
+      "processed_csv": "data\\processed\\附件4_clean.csv"
+    }
+  ]
+}
