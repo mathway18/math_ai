@@ -1,0 +1,76 @@
+{
+  "question": "Question 2 only",
+  "cleaning_rule": "Remove only the first physical data row when its reflectance is exactly 0%; keep the raw workbook unchanged.",
+  "attachments": [
+    {
+      "attachment": 1,
+      "angle_deg": 10.0,
+      "source_file": "F:\\数学建模\\2025B\\题目2_完整交付\\data\\附件1.xlsx",
+      "source_sha256": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+      "sheet": "active_sheet",
+      "headers": [
+        "波数 (cm-1)",
+        "反射率 (%)"
+      ],
+      "source_rows": 7469,
+      "fitting_rows": 7468,
+      "removed_first_zero": true,
+      "raw_wavenumber_cm_inv": {
+        "min": 399.6747,
+        "max": 4000.122,
+        "median_step": 0.4819999999999709,
+        "min_step": 0.48099999999976717,
+        "max_step": 0.4830000000001746,
+        "duplicate_count": 0
+      },
+      "raw_reflectance_percent": {
+        "min": 0.0,
+        "max": 95.38499492,
+        "mean": 22.266821665287186,
+        "above_100_count": 0,
+        "zero_row_indices_zero_based": [
+          0
+        ]
+      },
+      "fitting_range_cm_inv": [
+        400.1569,
+        4000.122
+      ]
+    },
+    {
+      "attachment": 2,
+      "angle_deg": 15.0,
+      "source_file": "F:\\数学建模\\2025B\\题目2_完整交付\\data\\附件2.xlsx",
+      "source_sha256": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+      "sheet": "active_sheet",
+      "headers": [
+        "波数 (cm-1)",
+        "反射率 (%)"
+      ],
+      "source_rows": 7469,
+      "fitting_rows": 7468,
+      "removed_first_zero": true,
+      "raw_wavenumber_cm_inv": {
+        "min": 399.6747,
+        "max": 4000.122,
+        "median_step": 0.4819999999999709,
+        "min_step": 0.48099999999976717,
+        "max_step": 0.4830000000001746,
+        "duplicate_count": 0
+      },
+      "raw_reflectance_percent": {
+        "min": 0.0,
+        "max": 102.7393552,
+        "mean": 23.59146189164426,
+        "above_100_count": 262,
+        "zero_row_indices_zero_based": [
+          0
+        ]
+      },
+      "fitting_range_cm_inv": [
+        400.1569,
+        4000.122
+      ]
+    }
+  ]
+}

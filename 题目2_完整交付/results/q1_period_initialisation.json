@@ -1,0 +1,100 @@
+{
+  "attachment_1": {
+    "attachment": 1,
+    "angle_deg": 10.0,
+    "detection_band_cm_inv": [
+      1300.0,
+      3500.0
+    ],
+    "smoothing": {
+      "method": "Savitzky-Golay",
+      "window_points": 101,
+      "polynomial_order": 3
+    },
+    "peaks_cm_inv": [
+      1394.281,
+      1597.252,
+      1838.793,
+      2079.851,
+      2323.32,
+      2582.217,
+      2838.221,
+      3094.225,
+      3346.854
+    ],
+    "peak_prominence_percent": [
+      1.621209529650221,
+      1.4796637354072057,
+      1.4618258375634312,
+      1.3172930497285904,
+      1.0428215213376042,
+      0.9145442657294218,
+      0.7106819442299965,
+      0.5349834796142581,
+      0.4473936937375811
+    ],
+    "successive_spacing_cm_inv": [
+      202.971,
+      241.54099999999994,
+      241.05800000000022,
+      243.46900000000005,
+      258.89699999999993,
+      256.0039999999999,
+      256.0039999999999,
+      252.6289999999999
+    ],
+    "median_spacing_cm_inv": 248.04899999999998,
+    "n_initial": 2.55,
+    "d_initial_um": 7.92321882412757,
+    "role": "Question-1 period estimate used only for initialization and an independent scale check."
+  },
+  "attachment_2": {
+    "attachment": 2,
+    "angle_deg": 15.0,
+    "detection_band_cm_inv": [
+      1300.0,
+      3500.0
+    ],
+    "smoothing": {
+      "method": "Savitzky-Golay",
+      "window_points": 101,
+      "polynomial_order": 3
+    },
+    "peaks_cm_inv": [
+      1406.816,
+      1605.931,
+      1859.042,
+      2099.136,
+      2391.299,
+      2611.144,
+      2869.559,
+      3127.491,
+      3382.049
+    ],
+    "peak_prominence_percent": [
+      1.6224256982715612,
+      1.4326551611328888,
+      1.5197784907155771,
+      1.3713526506232796,
+      0.8096082261251816,
+      0.9078609036045684,
+      0.6798317959223539,
+      0.5104726738629175,
+      0.42977944522322886
+    ],
+    "successive_spacing_cm_inv": [
+      199.115,
+      253.11099999999988,
+      240.09400000000005,
+      292.163,
+      219.8449999999998,
+      258.4150000000004,
+      257.9319999999998,
+      254.558
+    ],
+    "median_spacing_cm_inv": 253.83449999999993,
+    "n_initial": 2.55,
+    "d_initial_um": 7.7647553990015465,
+    "role": "Question-1 period estimate used only for initialization and an independent scale check."
+  }
+}

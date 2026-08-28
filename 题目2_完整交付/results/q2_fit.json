@@ -1,0 +1,575 @@
+{
+  "problem": "2025 CUMCM B Question 2",
+  "input_audit": {
+    "question": "Question 2 only",
+    "cleaning_rule": "Remove only the first physical data row when its reflectance is exactly 0%; keep the raw workbook unchanged.",
+    "attachments": [
+      {
+        "attachment": 1,
+        "angle_deg": 10.0,
+        "source_file": "F:\\数学建模\\2025B\\题目2_完整交付\\data\\附件1.xlsx",
+        "source_sha256": "b42f8bdabe7497951284cd044386c3cdf9d349b5e8ef4baaa0336e65ff84c67b",
+        "sheet": "active_sheet",
+        "headers": [
+          "波数 (cm-1)",
+          "反射率 (%)"
+        ],
+        "source_rows": 7469,
+        "fitting_rows": 7468,
+        "removed_first_zero": true,
+        "raw_wavenumber_cm_inv": {
+          "min": 399.6747,
+          "max": 4000.122,
+          "median_step": 0.4819999999999709,
+          "min_step": 0.48099999999976717,
+          "max_step": 0.4830000000001746,
+          "duplicate_count": 0
+        },
+        "raw_reflectance_percent": {
+          "min": 0.0,
+          "max": 95.38499492,
+          "mean": 22.266821665287186,
+          "above_100_count": 0,
+          "zero_row_indices_zero_based": [
+            0
+          ]
+        },
+        "fitting_range_cm_inv": [
+          400.1569,
+          4000.122
+        ]
+      },
+      {
+        "attachment": 2,
+        "angle_deg": 15.0,
+        "source_file": "F:\\数学建模\\2025B\\题目2_完整交付\\data\\附件2.xlsx",
+        "source_sha256": "24b3113e80d5ec5458ba4f447df9ed185578481e8b0081bdf0673689505e49d0",
+        "sheet": "active_sheet",
+        "headers": [
+          "波数 (cm-1)",
+          "反射率 (%)"
+        ],
+        "source_rows": 7469,
+        "fitting_rows": 7468,
+        "removed_first_zero": true,
+        "raw_wavenumber_cm_inv": {
+          "min": 399.6747,
+          "max": 4000.122,
+          "median_step": 0.4819999999999709,
+          "min_step": 0.48099999999976717,
+          "max_step": 0.4830000000001746,
+          "duplicate_count": 0
+        },
+        "raw_reflectance_percent": {
+          "min": 0.0,
+          "max": 102.7393552,
+          "mean": 23.59146189164426,
+          "above_100_count": 262,
+          "zero_row_indices_zero_based": [
+            0
+          ]
+        },
+        "fitting_range_cm_inv": [
+          400.1569,
+          4000.122
+        ]
+      }
+    ]
+  },
+  "model_assumptions": {
+    "geometry": "air--SiC epitaxial layer--SiC substrate",
+    "interference": "Question-1 two-beam truncation",
+    "polarisation": "unpolarised; arithmetic mean of s and p intensities",
+    "shared_parameters_across_angles": [
+      "d_um",
+      "gamma_L_cm_inv",
+      "gamma_T_cm_inv",
+      "omega_p_layer_cm_inv",
+      "gamma_p_layer_cm_inv",
+      "omega_p_substrate_cm_inv",
+      "gamma_p_substrate_cm_inv"
+    ],
+    "layer_substrate_distinction": "The two Drude pairs distinguish the epitaxial layer from the substrate; they are still shared across the two incident angles.",
+    "affine_calibration": "per-angle bounded scale and offset eliminated by least squares",
+    "constants": {
+      "eps_inf": 6.56,
+      "omega_L_cm_inv": 970.0,
+      "omega_T_cm_inv": 798.0
+    }
+  },
+  "question_1_period_initialisation": {
+    "attachment_1": {
+      "attachment": 1,
+      "angle_deg": 10.0,
+      "detection_band_cm_inv": [
+        1300.0,
+        3500.0
+      ],
+      "smoothing": {
+        "method": "Savitzky-Golay",
+        "window_points": 101,
+        "polynomial_order": 3
+      },
+      "peaks_cm_inv": [
+        1394.281,
+        1597.252,
+        1838.793,
+        2079.851,
+        2323.32,
+        2582.217,
+        2838.221,
+        3094.225,
+        3346.854
+      ],
+      "peak_prominence_percent": [
+        1.621209529650221,
+        1.4796637354072057,
+        1.4618258375634312,
+        1.3172930497285904,
+        1.0428215213376042,
+        0.9145442657294218,
+        0.7106819442299965,
+        0.5349834796142581,
+        0.4473936937375811
+      ],
+      "successive_spacing_cm_inv": [
+        202.971,
+        241.54099999999994,
+        241.05800000000022,
+        243.46900000000005,
+        258.89699999999993,
+        256.0039999999999,
+        256.0039999999999,
+        252.6289999999999
+      ],
+      "median_spacing_cm_inv": 248.04899999999998,
+      "n_initial": 2.55,
+      "d_initial_um": 7.92321882412757,
+      "role": "Question-1 period estimate used only for initialization and an independent scale check."
+    },
+    "attachment_2": {
+      "attachment": 2,
+      "angle_deg": 15.0,
+      "detection_band_cm_inv": [
+        1300.0,
+        3500.0
+      ],
+      "smoothing": {
+        "method": "Savitzky-Golay",
+        "window_points": 101,
+        "polynomial_order": 3
+      },
+      "peaks_cm_inv": [
+        1406.816,
+        1605.931,
+        1859.042,
+        2099.136,
+        2391.299,
+        2611.144,
+        2869.559,
+        3127.491,
+        3382.049
+      ],
+      "peak_prominence_percent": [
+        1.6224256982715612,
+        1.4326551611328888,
+        1.5197784907155771,
+        1.3713526506232796,
+        0.8096082261251816,
+        0.9078609036045684,
+        0.6798317959223539,
+        0.5104726738629175,
+        0.42977944522322886
+      ],
+      "successive_spacing_cm_inv": [
+        199.115,
+        253.11099999999988,
+        240.09400000000005,
+        292.163,
+        219.8449999999998,
+        258.4150000000004,
+        257.9319999999998,
+        254.558
+      ],
+      "median_spacing_cm_inv": 253.83449999999993,
+      "n_initial": 2.55,
+      "d_initial_um": 7.7647553990015465,
+      "role": "Question-1 period estimate used only for initialization and an independent scale check."
+    }
+  },
+  "joint_fit": {
+    "model": "SiC_two_beam_Fresnel_Lorentz_Drude",
+    "use_affine_calibration": true,
+    "parameters": {
+      "d_um": 7.400452153256163,
+      "gamma_L_cm_inv": 0.1,
+      "gamma_T_cm_inv": 2.5580835553030545,
+      "omega_p_layer_cm_inv": 473.8485626664637,
+      "gamma_p_layer_cm_inv": 1184.1327484848778,
+      "omega_p_substrate_cm_inv": 1123.2584342176108,
+      "gamma_p_substrate_cm_inv": 611.5947931686339
+    },
+    "calibration": {
+      "attachment_1": {
+        "scale": 0.9755606995795353,
+        "offset_percent": 0.03148053758134029
+      },
+      "attachment_2": {
+        "scale": 1.0524133991360254,
+        "offset_percent": -0.40439594962668224
+      }
+    },
+    "metrics": {
+      "attachment_1": {
+        "sse_percent_squared": 2112.393484834985,
+        "rmse_percent": 0.5318452135011912,
+        "mae_percent": 0.2407750191045429,
+        "max_abs_residual_percent": 6.43010612262592,
+        "mean_residual_percent": 7.521210934900364e-16,
+        "residual_q50_abs_percent": 0.12081107918849376,
+        "residual_q95_abs_percent": 0.7726236596749607,
+        "r2": 0.9990855230194229
+      },
+      "attachment_2": {
+        "sse_percent_squared": 4856.50180508064,
+        "rmse_percent": 0.8064169036090688,
+        "mae_percent": 0.3764794903802784,
+        "max_abs_residual_percent": 13.306436895984163,
+        "mean_residual_percent": 4.5669592014575265e-17,
+        "residual_q50_abs_percent": 0.2196911015372418,
+        "residual_q95_abs_percent": 1.2168264011511596,
+        "r2": 0.9981953585983158
+      }
+    },
+    "n_observations": 14936,
+    "parameter_count_for_ic": 11,
+    "information_criteria": {
+      "aic": -11363.97700319125,
+      "bic": -11280.250176653813
+    },
+    "bounds": {
+      "d_um": [
+        3.0,
+        12.0
+      ],
+      "gamma_L_cm_inv": [
+        0.1,
+        1500.0
+      ],
+      "gamma_T_cm_inv": [
+        0.1,
+        1500.0
+      ],
+      "omega_p_layer_cm_inv": [
+        1.0,
+        5000.0
+      ],
+      "gamma_p_layer_cm_inv": [
+        0.1,
+        2000.0
+      ],
+      "omega_p_substrate_cm_inv": [
+        1.0,
+        5000.0
+      ],
+      "gamma_p_substrate_cm_inv": [
+        0.1,
+        2000.0
+      ]
+    },
+    "boundary_flags": {
+      "d_um": false,
+      "gamma_L_cm_inv": true,
+      "gamma_T_cm_inv": false,
+      "omega_p_layer_cm_inv": false,
+      "gamma_p_layer_cm_inv": false,
+      "omega_p_substrate_cm_inv": false,
+      "gamma_p_substrate_cm_inv": false
+    },
+    "optimizer": {
+      "global_method": "differential_evolution",
+      "local_method": "L-BFGS-B",
+      "subsample_stride": 12,
+      "seeds": [
+        2025,
+        2718,
+        3141
+      ],
+      "selected_subsample_start": "seed_3141",
+      "selected_subsample_mse_percent_squared": 0.4769480398261269,
+      "full_success": true,
+      "full_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "full_nit": 71,
+      "full_nfev": 664,
+      "full_mse_percent_squared": 0.46658377677528284,
+      "seed_records": [
+        {
+          "seed": 2025,
+          "de_subsample_mse_percent_squared": 0.49278494931699307,
+          "local_subsample_mse_percent_squared": 0.47694803982808226,
+          "local_parameters": [
+            7.397358789196434,
+            0.1,
+            2.8777847130565988,
+            480.3664149396102,
+            1065.6662491366426,
+            1125.862502470071,
+            577.7805117728278
+          ],
+          "local_success": true,
+          "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "local_nit": 58,
+          "local_nfev": 576
+        },
+        {
+          "seed": 2718,
+          "de_subsample_mse_percent_squared": 0.4791918449372521,
+          "local_subsample_mse_percent_squared": 0.4769480398305336,
+          "local_parameters": [
+            7.3973589195772895,
+            0.1,
+            2.8777812076135016,
+            480.36623371220065,
+            1065.6626626470209,
+            1125.8624251895494,
+            577.7806334891192
+          ],
+          "local_success": true,
+          "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "local_nit": 76,
+          "local_nfev": 688
+        },
+        {
+          "seed": 3141,
+          "de_subsample_mse_percent_squared": 0.48247627408092214,
+          "local_subsample_mse_percent_squared": 0.4769480398261269,
+          "local_parameters": [
+            7.397358822978185,
+            0.1,
+            2.8777768328061533,
+            480.36617680967277,
+            1065.6650744049634,
+            1125.8624383848576,
+            577.780722047461
+          ],
+          "local_success": true,
+          "local_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+          "local_nit": 67,
+          "local_nfev": 592
+        }
+      ]
+    },
+    "initialisation": {
+      "attachment_1": {
+        "attachment": 1,
+        "angle_deg": 10.0,
+        "detection_band_cm_inv": [
+          1300.0,
+          3500.0
+        ],
+        "smoothing": {
+          "method": "Savitzky-Golay",
+          "window_points": 101,
+          "polynomial_order": 3
+        },
+        "peaks_cm_inv": [
+          1394.281,
+          1597.252,
+          1838.793,
+          2079.851,
+          2323.32,
+          2582.217,
+          2838.221,
+          3094.225,
+          3346.854
+        ],
+        "peak_prominence_percent": [
+          1.621209529650221,
+          1.4796637354072057,
+          1.4618258375634312,
+          1.3172930497285904,
+          1.0428215213376042,
+          0.9145442657294218,
+          0.7106819442299965,
+          0.5349834796142581,
+          0.4473936937375811
+        ],
+        "successive_spacing_cm_inv": [
+          202.971,
+          241.54099999999994,
+          241.05800000000022,
+          243.46900000000005,
+          258.89699999999993,
+          256.0039999999999,
+          256.0039999999999,
+          252.6289999999999
+        ],
+        "median_spacing_cm_inv": 248.04899999999998,
+        "n_initial": 2.55,
+        "d_initial_um": 7.92321882412757,
+        "role": "Question-1 period estimate used only for initialization and an independent scale check."
+      },
+      "attachment_2": {
+        "attachment": 2,
+        "angle_deg": 15.0,
+        "detection_band_cm_inv": [
+          1300.0,
+          3500.0
+        ],
+        "smoothing": {
+          "method": "Savitzky-Golay",
+          "window_points": 101,
+          "polynomial_order": 3
+        },
+        "peaks_cm_inv": [
+          1406.816,
+          1605.931,
+          1859.042,
+          2099.136,
+          2391.299,
+          2611.144,
+          2869.559,
+          3127.491,
+          3382.049
+        ],
+        "peak_prominence_percent": [
+          1.6224256982715612,
+          1.4326551611328888,
+          1.5197784907155771,
+          1.3713526506232796,
+          0.8096082261251816,
+          0.9078609036045684,
+          0.6798317959223539,
+          0.5104726738629175,
+          0.42977944522322886
+        ],
+        "successive_spacing_cm_inv": [
+          199.115,
+          253.11099999999988,
+          240.09400000000005,
+          292.163,
+          219.8449999999998,
+          258.4150000000004,
+          257.9319999999998,
+          254.558
+        ],
+        "median_spacing_cm_inv": 253.83449999999993,
+        "n_initial": 2.55,
+        "d_initial_um": 7.7647553990015465,
+        "role": "Question-1 period estimate used only for initialization and an independent scale check."
+      }
+    }
+  },
+  "thickness_profile": {
+    "csv": "q2_thickness_profile.csv",
+    "summary": {
+      "relative_mse_threshold": 0.01,
+      "interval_um": [
+        7.3765039344770456,
+        7.422775503109889
+      ],
+      "half_width_um": 0.023135784316421937,
+      "relative_half_width": 0.003126266319584582,
+      "interpretation": "Re-optimised nuisance-parameter sensitivity interval; not a formal sampling confidence interval."
+    }
+  },
+  "material_constant_sensitivity": {
+    "relative_change": 0.02,
+    "records": [
+      {
+        "perturbed_parameter": "eps_inf",
+        "relative_change": -0.02,
+        "changed_value": 6.4288,
+        "conditional_d_um": 7.478911893341129,
+        "relative_d_change": 0.010602019776648985,
+        "conditional_mse_percent_squared": 0.46559642420096525,
+        "local_search_bounds_um": [
+          6.950452153256163,
+          7.850452153256163
+        ]
+      },
+      {
+        "perturbed_parameter": "eps_inf",
+        "relative_change": 0.02,
+        "changed_value": 6.691199999999999,
+        "conditional_d_um": 7.324361112138328,
+        "relative_d_change": -0.010281944878780869,
+        "conditional_mse_percent_squared": 0.4796176765521997,
+        "local_search_bounds_um": [
+          6.950452153256163,
+          7.850452153256163
+        ]
+      },
+      {
+        "perturbed_parameter": "omega_L_cm_inv",
+        "relative_change": -0.02,
+        "changed_value": 950.6,
+        "conditional_d_um": 7.360531442603628,
+        "relative_d_change": -0.005394361023599026,
+        "conditional_mse_percent_squared": 26.70095964902765,
+        "local_search_bounds_um": [
+          6.950452153256163,
+          7.850452153256163
+        ]
+      },
+      {
+        "perturbed_parameter": "omega_L_cm_inv",
+        "relative_change": 0.02,
+        "changed_value": 989.4,
+        "conditional_d_um": 7.4446286045260734,
+        "relative_d_change": 0.0059694259695297625,
+        "conditional_mse_percent_squared": 21.664477511347066,
+        "local_search_bounds_um": [
+          6.950452153256163,
+          7.850452153256163
+        ]
+      },
+      {
+        "perturbed_parameter": "omega_T_cm_inv",
+        "relative_change": -0.02,
+        "changed_value": 782.04,
+        "conditional_d_um": 7.36168865365355,
+        "relative_d_change": -0.005237990706494444,
+        "conditional_mse_percent_squared": 4.566651649468133,
+        "local_search_bounds_um": [
+          6.950452153256163,
+          7.850452153256163
+        ]
+      },
+      {
+        "perturbed_parameter": "omega_T_cm_inv",
+        "relative_change": 0.02,
+        "changed_value": 813.96,
+        "conditional_d_um": 7.429957841337086,
+        "relative_d_change": 0.003987011532523788,
+        "conditional_mse_percent_squared": 5.29701245273553,
+        "local_search_bounds_um": [
+          6.950452153256163,
+          7.850452153256163
+        ]
+      }
+    ]
+  },
+  "omitted_higher_return_diagnostic": {
+    "attachment_1": {
+      "median": 0.0029949793136971894,
+      "p95": 0.022510895757486722,
+      "maximum": 0.06678066034782291
+    },
+    "attachment_2": {
+      "median": 0.002992613094236381,
+      "p95": 0.022414162684768906,
+      "maximum": 0.06078995674912571
+    }
+  },
+  "deliverables": {
+    "prediction_csv": "q2_predictions.csv",
+    "profile_csv": "q2_thickness_profile.csv",
+    "fit_json": "q2_fit.json"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.3.1"
+  }
+}

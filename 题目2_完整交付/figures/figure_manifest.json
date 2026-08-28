@@ -1,0 +1,25 @@
+{
+  "figures": [
+    {
+      "stem": "fig_q2_initial_peaks",
+      "purpose": "SG-smoothed spectra and period peaks"
+    },
+    {
+      "stem": "fig_q2_fit_residual",
+      "purpose": "two-angle fit and residuals"
+    },
+    {
+      "stem": "fig_q2_thickness_profile",
+      "purpose": "re-optimised thickness sensitivity profile"
+    },
+    {
+      "stem": "fig_q2_material_sensitivity",
+      "purpose": "material-constant perturbation check"
+    },
+    {
+      "stem": "fig_q2_workflow",
+      "purpose": "algorithm workflow"
+    }
+  ],
+  "source": "code/make_q2_figures.py"
+}
